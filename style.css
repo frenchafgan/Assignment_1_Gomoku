@@ -18,41 +18,46 @@ body {
 
 }
 
-.main {
-    flex: 1;
-    padding: 1rem;
+#board {
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    width: fit-content;
+    padding: 10px;
+    background-color: #F5DEB3;
+    border: 1px solid #8B4513;
+    margin: auto;
+}
+.row {
+    display: flex;
 }
 
 .cell {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    border: 1px solid black;
-    text-align: center;
-    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #8B4513;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
 }
 
-.cell:empty:hover {
-    background-color: #eee;
-}
-
-.cell:before {
-    content: "";
-    display: inline-block;
+.cell span {
+    display: block;
     width: 80%;
     height: 80%;
     border-radius: 50%;
-    margin: auto;
 }
 
-.cell.B:before {
-    background-color: black;
+.cell span.black {
+    background: radial-gradient(circle, #000000, #404040, #000000);
 }
 
-.cell.W:before {
-    background-color: white;
+.cell span.white {
+    background: radial-gradient(circle, #FFFFFF, #D3D3D3, #FFFFFF);
+}
+
+#reset {
+    display: block;
+    margin: 20px auto;
 }

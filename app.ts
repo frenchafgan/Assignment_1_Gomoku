@@ -25,14 +25,43 @@ export default class Gomoku {
         this.render();
     }
 
+    // render() {
+    //     this.boardElement.innerHTML = '';
+    //     this.board.forEach((row, y) => {
+    //         row.forEach((cell, x) => {
+    //             const cellElement = document.createElement('div');
+    //             cellElement.classList.add('cell');
+    //             cellElement.classList.add(cell === Player.One ? 'B' : cell === Player.Two ? 'W' : '');
+    //             cellElement.addEventListener('click', () => {
+    //                 if (cell === Player.None && this.gameActive && this.makeMove(x, y)) {
+    //                     const winner = this.checkWin();
+    //                     if (winner !== Player.None) {
+    //                         this.gameActive = false;
+    //                         this.statusElement.textContent = `Player ${winner === Player.One ? 'Black' : 'White'} wins!`;
+    //                     } else if (this.board.flat().every(cell => cell !== Player.None)) {
+    //                         this.gameActive = false;
+    //                         this.statusElement.textContent = `Game is a draw`;
+    //                     } else {
+    //                         this.statusElement.textContent = `Player ${this.currentPlayer === Player.One ? 'Black' : 'White'}'s turn`;
+    //                     }
+    //                 }
+    //             });
+    //             this.boardElement.appendChild(cellElement);
+    //         });
+    //         this.boardElement.appendChild(document.createElement('br'));
+    //     });
+    // }
     render() {
         this.boardElement.innerHTML = '';
         this.board.forEach((row, y) => {
+            const rowElement = document.createElement('div');
+            rowElement.classList.add('row');
             row.forEach((cell, x) => {
                 const cellElement = document.createElement('div');
                 cellElement.classList.add('cell');
-                cellElement.classList.add(cell === Player.One ? 'B' : cell === Player.Two ? 'W' : '');
-                cellElement.textContent = cell === Player.One ? 'B' : cell === Player.Two ? 'W' : '';
+                const piece = document.createElement('span');
+                piece.classList.add(cell === Player.One ? 'black' : cell === Player.Two ? 'white' : 'empty');
+                cellElement.appendChild(piece);
                 cellElement.addEventListener('click', () => {
                     if (cell === Player.None && this.gameActive && this.makeMove(x, y)) {
                         const winner = this.checkWin();
@@ -47,11 +76,13 @@ export default class Gomoku {
                         }
                     }
                 });
-                this.boardElement.appendChild(cellElement);
+                rowElement.appendChild(cellElement);
             });
-            this.boardElement.appendChild(document.createElement('br'));
+            this.boardElement.appendChild(rowElement);
         });
     }
+
+
 
     makeMove(x: number, y: number): boolean {
         this.board[y][x] = this.currentPlayer;

@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    min-width: 100vh;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.header {
+    font-size: 2.5rem;
+    padding: 1rem;
+    background-color: #4F58DF;
+    color: white;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+
+}
+
+.main {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}

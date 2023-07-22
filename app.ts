@@ -108,7 +108,29 @@ class Gomoku {
     }
 }
 
-const gomoku = new Gomoku(5, 'board', 'message', 'turn');
+// const gomoku = new Gomoku(6, 'board', 'message', 'turn');
+// const resetButton = document.getElementById('reset') as HTMLButtonElement;
+// resetButton.addEventListener('click', () => gomoku.reset());
+// gomoku.render();
+
+const startButton = document.getElementById('startGame') as HTMLButtonElement;
+const sizeInput = document.getElementById('boardSize') as HTMLInputElement;
+let gomoku: Gomoku;
+
+startButton.addEventListener('click', () => {
+    let size = parseInt(sizeInput.value, 10);
+    if (size < 5) {
+        alert('Board size can\'t be less than 5');
+        return;
+    }
+    if (size > 15) {
+        alert('Board size can\'t be greater than 15');
+        return;
+    } 
+    size = size || 5;
+    gomoku = new Gomoku(size, 'board', 'message', 'turn');
+    gomoku.render();
+});
+
 const resetButton = document.getElementById('reset') as HTMLButtonElement;
 resetButton.addEventListener('click', () => gomoku.reset());
-gomoku.render();

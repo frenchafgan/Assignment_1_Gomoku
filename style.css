@@ -26,3 +26,33 @@ body {
     align-items: center;
 
 }
+
+.cell {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid black;
+    text-align: center;
+    user-select: none;
+}
+
+.cell:empty:hover {
+    background-color: #eee;
+}
+
+.cell:before {
+    content: "";
+    display: inline-block;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.cell.B:before {
+    background-color: black;
+}
+
+.cell.W:before {
+    background-color: white;
+}

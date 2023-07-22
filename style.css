@@ -1,9 +1,11 @@
-body {
+/* body {
     margin: 0;
     min-width: 100vh;
     padding: 0;
     display: flex;
     flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    background-color: #F5F5F5;
     
 }
 
@@ -13,7 +15,6 @@ body {
     background-color: #4F58DF;
     color: white;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
     font-weight: bolder;
 
 }
@@ -58,21 +59,135 @@ body {
     background: radial-gradient(circle, #FFFFFF, #D3D3D3, #FFFFFF);
 }
 
-#reset {
+#reset, #startGame {
     display: block;
     margin: 20px auto;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 12px 20px;
+    transition: 0.3s;
+    align-self: flex-start;
 }
 
-#turn {
+#reset:hover, #startGame:hover {
+    background-color: #45a049;
+}
+
+#boardSize {
+    width: 150px;
+    padding: 12px;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+    align-self: flex-start;
+}
+
+#turn, #message {
     font-size: 2em;
     font-weight: bold;
     color: #333;
     margin-top: 1em;
     text-align: center;
     text-shadow: 1px 1px 2px #888;
+} */
+
+body {
+    margin: 0;
+    min-width: 100vh;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    background-color: #F5F5F5;
 }
 
-#message {
+.header {
+    font-size: 2.5rem;
+    padding: 1rem;
+    background-color: #4F58DF;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+}
+
+#board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    padding: 10px;
+    background-color: #F5DEB3;
+    border: 1px solid #8B4513;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #8B4513;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.cell span {
+    display: block;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+}
+
+.cell span.black {
+    background: radial-gradient(circle, #000000, #404040, #000000);
+}
+
+.cell span.white {
+    background: radial-gradient(circle, #FFFFFF, #D3D3D3, #FFFFFF);
+}
+
+#controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 20px;
+}
+
+#reset, #startGame {
+    display: block;
+    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 12px 20px;
+    transition: 0.3s;
+}
+
+#reset:hover, #startGame:hover {
+    background-color: #45a049;
+}
+
+#boardSize {
+    width: 150px;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#turn, #message {
     font-size: 2em;
     font-weight: bold;
     color: #333;

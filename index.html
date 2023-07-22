@@ -11,13 +11,15 @@
   <body>
     <header class="header">Gomoku</header>
     <main class="main" id="Game">
-      <input type="number" id="boardSize" min="5" value="5">
-      <button id="startGame">Start Game</button>
+      <div id="controls">
+          <input type="number" id="boardSize" placeholder="Board size (5-15)">
+          <button id="startGame">Start Game</button>
+          <button id="reset">Reset</button>
+      </div>
       <div id="board"></div>
-      <button id="reset">Reset</button>
-      <div id="message"></div>
       <div id="turn"></div>
-
+      <div id="message"></div>
+     
   
     </main>
   </body>

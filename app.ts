@@ -123,8 +123,8 @@ startButton.addEventListener('click', () => {
         alert('Board size can\'t be less than 5');
         return;
     }
-    if (size > 15) {
-        alert('Board size can\'t be greater than 15');
+    if (size > 25) {
+        alert('Board size can\'t be greater than 25');
         return;
     } 
     size = size || 5;

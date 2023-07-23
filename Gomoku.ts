@@ -18,7 +18,8 @@ export default class Gomoku {
     whiteWinsElement: HTMLElement;
 
 
-    constructor(size: number, boardElementId: string, messageElementId: string, turnElementId: string, blackWinsElementId: string, whiteWinsElementId: string) {
+    constructor(size: number, boardElementId: string, messageElementId: string,
+                turnElementId: string, blackWinsElementId: string, whiteWinsElementId: string) {
         this.size = size;
         this.board = Array.from({ length: size }, () => Array(size).fill(Player.None));
         this.currentPlayer = Player.Black;

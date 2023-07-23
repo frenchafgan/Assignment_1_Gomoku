@@ -94,6 +94,14 @@ class Gomoku {
         return false;
     }
 
+    updateCell(x: number, y: number, player: Player) {
+        const row = this.boardElement.children[y] as HTMLElement;
+        const cell = row.children[x] as HTMLElement;
+        const piece = document.createElement('span');
+        piece.classList.add(player === Player.Black ? 'black' : 'white');
+        cell.appendChild(piece);
+    }
+
     reset() {
         this.board = Array.from({ length: this.size }, () => Array(this.size).fill(Player.None));
         this.currentPlayer = Player.Black;

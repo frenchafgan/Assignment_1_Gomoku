@@ -56,4 +56,8 @@ in your browser e.g. `localhost:1234`.
 - The aim is to create a line of 5 stones of your color, horizontally, vertically, or diagonally.
 - The game ends when one player has achieved this or if the board is completely filled without a line of 5, in which case the game is a draw.
 
+## Bonus Feature
+
+The scoreboard is a great feature as it will help you keep track of your game and make it a challenge to beat your your opponent. The scoreboard will display the number of wins for each player and the number of draws. Just above the scoreboard it also displays the current player's turn.
+
 Enjoy the game!

@@ -11,8 +11,8 @@ body {
 .header {
     font-size: 2.5rem;
     padding: 1rem;
-    background-color: #4F58DF;
-    color: white;
+    background-color: #F5DEB3;
+    color: rgb(12, 11, 11);
     text-align: center;
     font-weight: bolder;
 }
@@ -21,11 +21,28 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: fit-content;
-    padding: 10px;
+    margin: auto;
     background-color: #F5DEB3;
     border: 1px solid #8B4513;
-    margin: auto;
+    padding: 10px;
+}
+
+#controls {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#game-area {
+    flex: 2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .row {
@@ -57,13 +74,6 @@ body {
     background: radial-gradient(circle, #FFFFFF, #D3D3D3, #FFFFFF);
 }
 
-#controls {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    padding: 0 20px;
-}
 
 #reset, #startGame {
     display: block;
@@ -76,9 +86,6 @@ body {
     transition: 0.3s;
 }
 
-#reset:hover, #startGame:hover {
-    background-color: #45a049;
-}
 
 #boardSize {
     width: 150px;
@@ -90,25 +97,41 @@ body {
     text-align: center;
 }
 
-#turn, #message {
-    font-size: 2em;
-    font-weight: bold;
-    color: #333;
-    margin-top: 1em;
-    text-align: center;
-    text-shadow: 1px 1px 2px #888;
+#reset, #startGame {
+    margin: 10px 0;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#reset:hover, #startGame:hover {
+    background-color: #45a049;
 }
 
 #scoreboard {
+    flex: 1;
+    padding: 20px;
     display: flex;
-    justify-content: space-evenly;
-    padding: 10px;
-    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-color: #F5DEB3;
     border: 1px solid #8B4513;
     border-radius: 10px;
-    width: fit-content;
     margin: auto;
+    width: fit-content;
+}
+
+#turn, #message {
+    text-align: center;
+    margin-top: 1em;
+    font-size: 2em;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 1px 1px 2px #888;
 }
 
 .score {
@@ -117,5 +140,4 @@ body {
     color: #333;
     text-shadow: 1px 1px 2px #888;
     margin: 0 10px;
-
 }

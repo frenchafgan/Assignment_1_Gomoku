@@ -12,8 +12,13 @@ class Gomoku {
     gameOver: boolean;
     messageElement: HTMLElement;
     turnElement: HTMLElement;
+    blackWins: number;
+    whiteWins: number;
+    blackWinsElement: HTMLElement;
+    whiteWinsElement: HTMLElement;
 
-    constructor(size: number, boardElementId: string, messageElementId: string, turnElementId: string) {
+
+    constructor(size: number, boardElementId: string, messageElementId: string, turnElementId: string, blackWinsElementId: string, whiteWinsElementId: string) {
         this.size = size;
         this.board = Array.from({ length: size }, () => Array(size).fill(Player.None));
         this.currentPlayer = Player.Black;
@@ -21,6 +26,12 @@ class Gomoku {
         this.gameOver = false;
         this.messageElement = document.getElementById(messageElementId) as HTMLElement;
         this.turnElement = document.getElementById(turnElementId) as HTMLElement;
+        this.blackWins = 0;
+        this.whiteWins = 0;
+        this.blackWinsElement = document.getElementById(blackWinsElementId) as HTMLElement;
+        this.whiteWinsElement = document.getElementById(whiteWinsElementId) as HTMLElement;
+        this.blackWinsElement.innerText = `Black wins: ${this.blackWins}`;
+        this.whiteWinsElement.innerText = `White wins: ${this.whiteWins}`;
     }
 
     play(x: number, y: number) {
@@ -36,19 +47,28 @@ class Gomoku {
     
         if (this.checkForWin(x, y, player)) {
             this.gameOver = true;
+            if (player === Player.Black) {
+                this.blackWins++;
+                this.blackWinsElement.innerText = `Black wins: ${this.blackWins}`;
+            } else {
+                this.whiteWins++;
+                this.whiteWinsElement.innerText = `White wins: ${this.whiteWins}`;
+            }
             this.messageElement.innerText = `${Player[player]} wins!`;
             this.messageElement.style.display = "block";
-            this.turnElement.innerText = '';  // Clear the turn message
+            this.turnElement.style.display = "none";
         } else if (this.isBoardFull()) {
             this.gameOver = true;
             this.messageElement.innerText = 'It\'s a tie!';
             this.messageElement.style.display = "block";
-            this.turnElement.innerText = '';  // Clear the turn message
+            this.turnElement.style.display = "none";
         } else {
             this.currentPlayer = this.currentPlayer === Player.Black ? Player.White : Player.Black;
             this.turnElement.innerText = `It's ${Player[this.currentPlayer]}'s turn`;
+            this.turnElement.style.display = "block";
         }
     }
+
 
     isBoardFull(): boolean {
         return this.board.every(row => row.every(cell => cell !== Player.None));
@@ -80,9 +100,10 @@ class Gomoku {
         this.gameOver = false;
         this.messageElement.style.display = "none";
         this.turnElement.innerText = `It's ${Player[this.currentPlayer]}'s turn`;
+        this.turnElement.style.display = "block";
         this.render();
     }
-
+    
     render() {
         this.boardElement.innerHTML = '';
         this.board.forEach((row, y) => {
@@ -96,11 +117,13 @@ class Gomoku {
                     piece.classList.add(cell === Player.Black ? 'black' : 'white');
                     cellElement.appendChild(piece);
                 }
+                
                 cellElement.addEventListener('click', () => {
                     if (!this.gameOver) {
                         this.play(x, y);
                     }
                 });
+                
                 rowElement.appendChild(cellElement);
             });
             this.boardElement.appendChild(rowElement);
@@ -108,10 +131,6 @@ class Gomoku {
     }
 }
 
-// const gomoku = new Gomoku(6, 'board', 'message', 'turn');
-// const resetButton = document.getElementById('reset') as HTMLButtonElement;
-// resetButton.addEventListener('click', () => gomoku.reset());
-// gomoku.render();
 
 const startButton = document.getElementById('startGame') as HTMLButtonElement;
 const sizeInput = document.getElementById('boardSize') as HTMLInputElement;
@@ -128,9 +147,16 @@ startButton.addEventListener('click', () => {
         return;
     } 
     size = size || 5;
-    gomoku = new Gomoku(size, 'board', 'message', 'turn');
+    gomoku = new Gomoku(size, 'board', 'message', 'turn', 'blackWins', 'whiteWins');
     gomoku.render();
 });
 
 const resetButton = document.getElementById('reset') as HTMLButtonElement;
 resetButton.addEventListener('click', () => gomoku.reset());
+
+// Event listener for "Enter" key.
+sizeInput.addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+        startButton.click();
+    }
+});

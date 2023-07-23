@@ -18,7 +18,7 @@ startButton.addEventListener('click', () => {
         alert('Board size can\'t be greater than 25');
         return;
     } 
-    size = size || 5;
+    size = 5;
     gomoku = new Gomoku(size, 'board', 'message', 'turn', 'blackWins', 'whiteWins');
     gomoku.render();
 });

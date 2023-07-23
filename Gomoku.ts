@@ -111,7 +111,7 @@ export default class Gomoku {
         this.turnElement.style.display = "block";
         this.render();
     }
-    
+        
     render() {
         this.boardElement.innerHTML = '';
         this.board.forEach((row, y) => {
@@ -126,6 +126,7 @@ export default class Gomoku {
                     cellElement.appendChild(piece);
                 }
                 
+                // attach event listener to cellElement instead of piece
                 cellElement.addEventListener('click', () => {
                     if (!this.gameOver) {
                         this.play(x, y);

@@ -1,3 +1,4 @@
+ 
 import Gomoku from './Gomoku';
 
 document.addEventListener('DOMContentLoaded', (event) => {
